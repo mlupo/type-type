@@ -86,5 +86,5 @@ while True:
                 story = reader.read()
             sendText(story, busy_signal=BUSY, sel_signal=SEL)
         except OSError:
-            sendText("no file found\n\n\n", busy_signal=BUSY, sel_signal=SEL)
+            sendText("no file found\n\n\n\n", busy_signal=BUSY, sel_signal=SEL)
             print("file not found, try again?")
