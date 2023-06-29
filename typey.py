@@ -25,7 +25,7 @@ class TypeManager:
         sleep(0.0005*wait)
         print("strobe start")
         self.strobe_signal.value = False
-        sleep(0.001*wait)
+        sleep(0.0005*wait)
         self.strobe_signal.value = True
         print("strobe end\n")
         sleep(0.0005*wait)
@@ -38,7 +38,7 @@ class TypeManager:
         while position <= count:
             if not self.busy_signal.value:
                 sleep(0.0005)
-                self.sendChar(text[position], pins=self.pins)
+                self.sendChar(text[position])
                 position += 1
                 if extra_beeps and (position % beep_count) == 0:
                     self.sendChar("\a")  # ASCII Bell (BEL)
