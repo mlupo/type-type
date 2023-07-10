@@ -1,12 +1,12 @@
-from board import A3, A2, A1, A0, SCK, MISO, MOSI, D10, D5, D6, D3, BUTTON
+from board import A3, A2, A1, A0, SCK, MISO, MOSI, D10, D5, D6, D3, D1
 from digitalio import DigitalInOut, Direction, Pull
 from adafruit_debouncer import Button
 from typey import TypeManager
 
-# user button
-button = DigitalInOut(BUTTON)
+# user switch as Debounced Button
+button = DigitalInOut(D1)
 button.switch_to_input(pull=Pull.UP)
-switch = Button(button, long_duration_ms=500)
+switch = Button(button, long_duration_ms=600)
 
 # BUSY high informs host that printer is busy and should wait before next data
 BUSY = DigitalInOut(D6)
@@ -36,16 +36,17 @@ for num, pin in enumerate(board_pin_list.copy()):
     board_pin_list[num].direction = Direction.OUTPUT
     board_pin_list[num].value = 0
 
-typeWriter = TypeManager(board_pin_list, BUSY, SEL, STROBE)
+typeWriter = TypeManager(board_pin_list, BUSY, SEL, STROBE, switch)
 
 story = "not a story...yet!\n\n\n"
 folder = "/stories/"
 while True:
-    # print("hey")
+    # update switch and check for a button press, and if printer is present
     switch.update()
     if SEL.value and switch.fell:
         try:
             with open(folder+'2_MERCEDES.txt', 'r') as reader:
+                # the entire text file is dumped into a string
                 story = reader.read()
             typeWriter.sendText(story)
         except OSError:
