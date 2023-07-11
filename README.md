@@ -27,8 +27,9 @@ BUSY | to microcontroller | D6 | 11 | high means the typewriter is busy and need
 For good measure I connected the DB25 pins 19 to 25 to ground. On a breadboard it looks something like this:
 ![](breadboard_typer_planning.png)
 
-I was having trouble figuring why my code was still wrong, so I added a row of red LEDS to illuminate the binary data bits I thought I should be sending to the printer. It really helped with debugging, and totally looks cool, so I let them as part of the design when I designed the pcb:
-<img src="assembled_pcb.JPG" width="400"/>
+I was having trouble figuring why my code was still wrong, so I added a row of red LEDS to illuminate the binary data bits I thought I should be sending to the printer. It really helped with debugging, and totally looks cool, so I left them as part of the design when I designed the pcb:
+
+<img src="./assembled_pcb.JPG" width="400"/>
 
 ### With lots of help from...
 This project all started with seeing a [youtube video showing](https://youtu.be/SpOyk6n5WTw) how an old Olivetti typewriter could print from a modern computer as a generic text printer. I did get my typewriter working using CUPS with a raspberry pi...but for a few reasons I didn't want to rely on the pi in an art installation.
