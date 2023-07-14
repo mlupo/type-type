@@ -50,3 +50,5 @@ Everything works and I am super-happy with this project, especially as I am just
 - Some escape characters always work to initiate the busy signal: newline, ascii BEL ... but some escape characters only work when there is a bunch of data in the buffer: backspace, tab ... but why?
 
 ![](it_is_alive.gif)
+
+*code is provided under the MIT license, all other media and graphics provided under the CC-BY license*
