@@ -49,6 +49,8 @@ while True:
                 # the entire text file is dumped into a string
                 story = reader.read()
             typeWriter.sendText(story)
+            # in the sendText loop sendChar() is used to send data char by char
+            # long press the switch will break out of the loop 
         except OSError:
             typeWriter.sendText("no file found\n\n\n\n")
             print("file not found, try again?")
